@@ -106,49 +106,25 @@
 </style>
 
 <script>
-(function(){
-  function applyTags(){
-    const blocks = document.querySelectorAll(
-      '#disqus_thread .post-message, #disqus_thread .comment__message'
-    );
 
-    blocks.forEach(block => {
-      if (block.dataset.tkTagged === "1") return;
+  /* iPhone / mobile polish */
+@media (max-width: 520px){
+  .wrap { padding: 14px; }
+  nav a { padding: 10px 12px; font-size: 15px; }
+  h1 { font-size: 28px; }
+  .card { padding: 14px; border-radius: 16px; }
+  .box { padding: 12px; border-radius: 14px; }
+}
 
-      const text = (block.innerText || '').trim().toLowerCase();
-      let type = null;
+/* iPhone safe area (notch) */
+header .wrap {
+  padding-top: calc(16px + env(safe-area-inset-top));
+}
+main.wrap {
+  padding-left: calc(16px + env(safe-area-inset-left));
+  padding-right: calc(16px + env(safe-area-inset-right));
+}
 
-      if (text.startsWith('bet 1:')) type = 'bet1';
-      if (text.startsWith('bet 2:')) type = 'bet2';
-      if (!type) return;
-
-      block.classList.add(type === 'bet1' ? 'tk-bet1' : 'tk-bet2');
-
-      const tag = document.createElement('span');
-      tag.className = `tk-tag ${type}`;
-      tag.textContent = type === 'bet1' ? 'BET 1' : 'BET 2';
-      block.prepend(tag);
-
-      block.dataset.tkTagged = "1";
-    });
-  }
-
-  const target = document.getElementById('disqus_thread');
-  if (!target) return;
-
-  const obs = new MutationObserver(applyTags);
-  obs.observe(target, { childList: true, subtree: true });
-
-  applyTags();
-})();
-</script>
-
-
-    
-    <noscript>Aktivér JavaScript for at se kommentar-tråden.</noscript>
-    <!-- SLUT DISQUS -->
-  </section>
-</main>
 
 </body>
 </html>
