@@ -1,1 +1,85 @@
-s.src = 'https://tipsklub365.disqus.com/embed.js';
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Odds – Tipsklub365</title>
+
+  <style>
+    :root{--bg:#0b0f17;--card:#0f172a;--muted:rgba(255,255,255,.72);--text:rgba(255,255,255,.92);--line:rgba(255,255,255,.10);--chip:rgba(255,255,255,.08);--accent:#7dd3fc;}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.45}
+    header{position:sticky;top:0;background:rgba(11,15,23,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+    .wrap{max-width:1020px;margin:0 auto;padding:16px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    nav a{color:var(--text);text-decoration:none;padding:9px 12px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:14px}
+    nav a.active{border-color:rgba(125,211,252,.55);box-shadow:0 0 0 3px rgba(125,211,252,.12) inset;}
+    .brand{font-weight:800;margin-right:6px}
+    main{padding:22px 0 40px}
+    .card{background:rgba(15,23,42,.70);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 10px 35px rgba(0,0,0,.25)}
+    h1{margin:0 0 10px;font-size:30px}
+    .muted{color:var(--muted)}
+    .box{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+    code{background:rgba(255,255,255,.08);padding:2px 6px;border-radius:8px}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <span class="brand">Tipsklub365</span>
+      <a href="index.html">Forside</a>
+      <a class="active" href="odds.html">Odds</a>
+      <a href="regler.html">Regler</a>
+      <a href="om.html">Om os</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h1>Odds-tråden</h1>
+    <p class="muted">
+      Her samler vi alle weekendens spil ét sted.
+      For at skrive skal du logge ind (fx med Google). Når du er logget ind én gang,
+      husker siden dig fremover.
+    </p>
+
+    <div class="box">
+      <div class="muted">Foreslået format</div>
+      <p>
+        <code>[Bet 1]</code> Kamp – Spiltype – Odds – Kort begrundelse<br>
+        <code>[Bet 2]</code> Kamp – Spiltype – Odds (max 1,50)
+      </p>
+      <p class="muted" style="margin-bottom:0">
+        Eksempel:
+        <code>[Bet 1]</code> Arsenal–Chelsea – 1X2: Arsenal – 1,72 – “Form + hjemmebane”
+      </p>
+    </div>
+
+    <div style="height:16px"></div>
+
+    <!-- DISQUS TRÅD -->
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = "https://tipsklub365.dk/odds.html";
+        this.page.identifier = "odds-thread";
+        this.page.title = "Tipsklub365 – Odds-tråden";
+      };
+
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://tipsklub365.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Aktivér JavaScript for at se kommentar-tråden.</noscript>
+    <!-- SLUT DISQUS -->
+  </section>
+</main>
+
+</body>
+</html>
