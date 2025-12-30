@@ -76,6 +76,52 @@
         (d.head || d.body).appendChild(s);
       })();
     </script>
+<style>
+/* Farver til Bet 1 og Bet 2 i Disqus */
+#disqus_thread .post-message p:first-child {
+  position: relative;
+}
+
+/* BET 1 */
+#disqus_thread .post-message p:first-child:has(:not(:empty))::before {
+  content: '';
+}
+
+/* BET 1 badge */
+#disqus_thread .post-message p:first-child:has(:not(:empty)) {
+  --bet1: rgba(125, 211, 252, 0.18);
+  --bet1-border: rgba(125, 211, 252, 0.45);
+}
+
+/* BET 2 badge */
+#disqus_thread .post-message p:first-child {
+  --bet2: rgba(34, 197, 94, 0.18);
+  --bet2-border: rgba(34, 197, 94, 0.45);
+}
+
+/* Match tekst */
+#disqus_thread .post-message p:first-child:where(:not(:empty)) {
+  padding-top: 6px;
+}
+
+/* BET 1 marker */
+#disqus_thread .post-message p:first-child:has(> strong:first-child:contains("Bet 1")),
+#disqus_thread .post-message p:first-child:has(:first-child:contains("Bet 1")) {
+  border-left: 4px solid var(--bet1-border);
+  background: var(--bet1);
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+/* BET 2 marker */
+#disqus_thread .post-message p:first-child:has(> strong:first-child:contains("Bet 2")),
+#disqus_thread .post-message p:first-child:has(:first-child:contains("Bet 2")) {
+  border-left: 4px solid var(--bet2-border);
+  background: var(--bet2);
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+</style>
 
     
     <noscript>Aktivér JavaScript for at se kommentar-tråden.</noscript>
