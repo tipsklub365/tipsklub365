@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regnskab – Tipsklub365</title>
+  <style>
+    :root{--bg:#0b0f17;--card:#0f172a;--muted:rgba(255,255,255,.72);--text:rgba(255,255,255,.92);--line:rgba(255,255,255,.10);--chip:rgba(255,255,255,.08);--accent:#7dd3fc;}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.45}
+    header{position:sticky;top:0;background:rgba(11,15,23,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+    .wrap{max-width:1020px;margin:0 auto;padding:16px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .brand{font-weight:800;margin-right:6px}
+    nav a{color:var(--text);text-decoration:none;padding:10px 12px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:14px}
+    nav a.active{border-color:rgba(125,211,252,.55);box-shadow:0 0 0 3px rgba(125,211,252,.12) inset;}
+    main{padding:22px 0 40px}
+    .card{background:rgba(15,23,42,.70);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 10px 35px rgba(0,0,0,.25)}
+    h1{margin:0 0 10px;font-size:30px}
+    .muted{color:var(--muted)}
+    .btn{display:inline-block;margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid rgba(125,211,252,.45);background:rgba(125,211,252,.10);color:var(--text);text-decoration:none;font-weight:650}
+    .btn:hover{background:rgba(125,211,252,.16)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <span class="brand">Tipsklub365</span>
+      <a href="index.html">Forside</a>
+      <a href="regler.html">Regler</a>
+      <a href="om.html">Om os</a>
+      <a class="active" href="regnskab.html">Regnskab</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h1>Regnskab</h1>
+    <p class="muted">
+      Regnskabet ligger i Excel. Tryk på knappen herunder for at åbne filen.
+      (Du kan blive bedt om at logge ind med din NEXT/SharePoint-konto.)
+    </p>
+
+    <a class="btn" target="_blank" rel="noopener"
+       href="https://ktsdk-my.sharepoint.com/:x:/g/personal/mkrj_nextkbh_dk/IQAShZPz4JT9Sq0_yw1Mq6HIARpO_J6XVFSxX_bUy0vIH20?e=qYweA9">
+      Åbn Excel-regnskab →
+    </a>
+  </section>
+</main>
+</body>
+</html>
