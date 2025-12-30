@@ -80,51 +80,69 @@
       })();
     </script>
 <style>
-/* Farver til Bet 1 og Bet 2 i Disqus */
-#disqus_thread .post-message p:first-child {
-  position: relative;
-}
-
-/* BET 1 */
-#disqus_thread .post-message p:first-child:has(:not(:empty))::before {
-  content: '';
-}
-
-/* BET 1 badge */
-#disqus_thread .post-message p:first-child:has(:not(:empty)) {
-  --bet1: rgba(125, 211, 252, 0.18);
-  --bet1-border: rgba(125, 211, 252, 0.45);
-}
-
-/* BET 2 badge */
-#disqus_thread .post-message p:first-child {
-  --bet2: rgba(34, 197, 94, 0.18);
-  --bet2-border: rgba(34, 197, 94, 0.45);
-}
-
-/* Match tekst */
-#disqus_thread .post-message p:first-child:where(:not(:empty)) {
-  padding-top: 6px;
-}
-
-/* BET 1 marker */
-#disqus_thread .post-message p:first-child:has(> strong:first-child:contains("Bet 1")),
-#disqus_thread .post-message p:first-child:has(:first-child:contains("Bet 1")) {
-  border-left: 4px solid var(--bet1-border);
-  background: var(--bet1);
-  padding: 8px 10px;
-  border-radius: 8px;
-}
-
-/* BET 2 marker */
-#disqus_thread .post-message p:first-child:has(> strong:first-child:contains("Bet 2")),
-#disqus_thread .post-message p:first-child:has(:first-child:contains("Bet 2")) {
-  border-left: 4px solid var(--bet2-border);
-  background: var(--bet2);
-  padding: 8px 10px;
-  border-radius: 8px;
-}
+  .tk-bet1 {
+    border-left: 4px solid rgba(125,211,252,.55) !important;
+    background: rgba(125,211,252,.12) !important;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+  }
+  .tk-bet2 {
+    border-left: 4px solid rgba(34,197,94,.55) !important;
+    background: rgba(34,197,94,.12) !important;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+  }
+  .tk-tag {
+    display:inline-block;
+    font-size:12px;
+    padding:3px 8px;
+    border-radius:999px;
+    margin-right:8px;
+    border:1px solid rgba(255,255,255,.18);
+    opacity:.9;
+  }
+  .tk-tag.bet1 { background: rgba(125,211,252,.16); }
+  .tk-tag.bet2 { background: rgba(34,197,94,.16); }
 </style>
+
+<script>
+(function(){
+  function applyTags(){
+    const blocks = document.querySelectorAll(
+      '#disqus_thread .post-message, #disqus_thread .comment__message'
+    );
+
+    blocks.forEach(block => {
+      if (block.dataset.tkTagged === "1") return;
+
+      const text = (block.innerText || '').trim().toLowerCase();
+      let type = null;
+
+      if (text.startsWith('bet 1:')) type = 'bet1';
+      if (text.startsWith('bet 2:')) type = 'bet2';
+      if (!type) return;
+
+      block.classList.add(type === 'bet1' ? 'tk-bet1' : 'tk-bet2');
+
+      const tag = document.createElement('span');
+      tag.className = `tk-tag ${type}`;
+      tag.textContent = type === 'bet1' ? 'BET 1' : 'BET 2';
+      block.prepend(tag);
+
+      block.dataset.tkTagged = "1";
+    });
+  }
+
+  const target = document.getElementById('disqus_thread');
+  if (!target) return;
+
+  const obs = new MutationObserver(applyTags);
+  obs.observe(target, { childList: true, subtree: true });
+
+  applyTags();
+})();
+</script>
+
 
     
     <noscript>Aktivér JavaScript for at se kommentar-tråden.</noscript>
